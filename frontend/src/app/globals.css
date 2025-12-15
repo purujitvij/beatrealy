@@ -1,0 +1,488 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius: 0.625rem;
+
+  /* Custom Animations */
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-gradient: gradient 8s ease infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-wave: wave 1.2s linear infinite;
+  --animate-bounce-subtle: bounce-subtle 2s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s ease-out;
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-scale-in: scale-in 0.2s ease-out;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(29, 185, 84, 0.3); }
+    100% { box-shadow: 0 0 40px rgba(29, 185, 84, 0.6), 0 0 60px rgba(29, 185, 84, 0.3); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes wave {
+    0%, 100% { transform: scaleY(0.5); }
+    50% { transform: scaleY(1); }
+  }
+
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  @keyframes slide-up {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  @keyframes equalizer {
+    0%, 100% { height: 10%; }
+    10% { height: 30%; }
+    20% { height: 60%; }
+    30% { height: 40%; }
+    40% { height: 80%; }
+    50% { height: 50%; }
+    60% { height: 90%; }
+    70% { height: 30%; }
+    80% { height: 70%; }
+    90% { height: 20%; }
+  }
+}
+
+:root {
+  /* Spotify/Moodify Premium Dark Theme */
+  --background: 0 0% 0%; /* Pure black #000000 */
+  --foreground: 0 0% 100%; /* Pure white #ffffff */
+
+  --card: 0 0% 7%; /* #121212 - Spotify card bg */
+  --card-foreground: 0 0% 100%;
+
+  --popover: 0 0% 9%; /* #171717 */
+  --popover-foreground: 0 0% 100%;
+
+  --primary: 141 73% 42%; /* #1DB954 - Spotify Green */
+  --primary-foreground: 0 0% 0%;
+
+  --secondary: 0 0% 12%; /* #1f1f1f */
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 0 0% 15%; /* #262626 */
+  --muted-foreground: 0 0% 64%; /* #a3a3a3 */
+
+  --accent: 0 0% 18%; /* #2e2e2e - Hover state */
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 72% 51%; /* Red */
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 141 73% 42%;
+
+  --radius: 0.625rem;
+
+  /* Custom Spotify Colors */
+  --spotify-green: 141 73% 42%;
+  --spotify-green-light: 141 73% 52%;
+  --spotify-black: 0 0% 0%;
+  --spotify-dark: 0 0% 7%;
+  --spotify-gray: 0 0% 70%;
+  --neon-purple: 270 100% 60%;
+  --neon-pink: 330 100% 60%;
+  --neon-blue: 200 100% 60%;
+}
+
+/* Premium Typography Base */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(ellipse 80% 80% at 50% -20%, rgba(29, 185, 84, 0.08), transparent),
+      radial-gradient(ellipse 60% 60% at 100% 100%, rgba(147, 51, 234, 0.05), transparent);
+  }
+
+  /* Premium Heading Styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+    text-wrap: balance;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] font-black;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl leading-[1.1] font-extrabold;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl leading-[1.2] font-bold;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl leading-[1.3] font-bold;
+  }
+
+  p {
+    @apply leading-relaxed;
+    text-wrap: pretty;
+  }
+
+  /* Selection Style */
+  ::selection {
+    @apply bg-primary text-black;
+  }
+
+  /* Focus Visible */
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Glass Effects */
+  .glass {
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-strong {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+  }
+
+  /* Premium Gradients */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-green-300 to-primary;
+    background-size: 200% auto;
+    animation: gradient 4s linear infinite;
+  }
+
+  .gradient-text-rainbow {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(
+      135deg,
+      hsl(141, 73%, 42%) 0%,
+      hsl(180, 73%, 52%) 25%,
+      hsl(270, 100%, 70%) 50%,
+      hsl(330, 100%, 70%) 75%,
+      hsl(141, 73%, 42%) 100%
+    );
+    background-size: 300% 300%;
+    animation: gradient 6s ease infinite;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: transparent;
+    border: none !important;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(141, 73%, 42%), hsl(270, 100%, 60%));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Neon Glow Effects */
+  .neon-glow {
+    box-shadow:
+      0 0 5px hsl(141, 73%, 42%),
+      0 0 20px rgba(29, 185, 84, 0.4),
+      0 0 40px rgba(29, 185, 84, 0.2);
+  }
+
+  .neon-glow-purple {
+    box-shadow:
+      0 0 5px hsl(270, 100%, 60%),
+      0 0 20px rgba(147, 51, 234, 0.4),
+      0 0 40px rgba(147, 51, 234, 0.2);
+  }
+
+  .text-glow {
+    text-shadow:
+      0 0 10px rgba(29, 185, 84, 0.5),
+      0 0 20px rgba(29, 185, 84, 0.3),
+      0 0 30px rgba(29, 185, 84, 0.2);
+  }
+
+  /* Noise Texture Overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* Shimmer Effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Hover Tilt Effect Base */
+  .hover-tilt {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+
+  .hover-tilt:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+  }
+
+  /* Scrollbar Styles */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Equalizer Bars */
+  .equalizer-bar {
+    animation: equalizer 1.2s ease-in-out infinite;
+  }
+
+  .equalizer-bar:nth-child(1) { animation-delay: 0s; }
+  .equalizer-bar:nth-child(2) { animation-delay: 0.1s; }
+  .equalizer-bar:nth-child(3) { animation-delay: 0.2s; }
+  .equalizer-bar:nth-child(4) { animation-delay: 0.3s; }
+  .equalizer-bar:nth-child(5) { animation-delay: 0.4s; }
+
+  /* Spotify Card Hover Effect */
+  .spotify-card {
+    @apply relative overflow-hidden rounded-lg bg-card transition-all duration-300;
+  }
+
+  .spotify-card:hover {
+    @apply bg-accent;
+    transform: translateY(-2px);
+  }
+
+  /* Premium Button Styles */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold;
+    @apply bg-primary text-black rounded-full;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-[0_0_30px_rgba(29,185,84,0.5)];
+    @apply active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold;
+    @apply bg-white/10 text-white rounded-full border border-white/10;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-white/20 hover:border-white/20;
+    @apply active:scale-95;
+  }
+
+  /* Floating Animation Variants */
+  .float-slow { animation: float 8s ease-in-out infinite; }
+  .float-medium { animation: float 6s ease-in-out infinite; }
+  .float-fast { animation: float 4s ease-in-out infinite; }
+
+  /* Pulse Ring Effect */
+  .pulse-ring {
+    @apply relative;
+  }
+
+  .pulse-ring::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 2px solid hsl(141, 73%, 42%);
+    animation: pulse-ring 2s ease-out infinite;
+  }
+
+  /* Music Waveform */
+  .waveform {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 20px;
+  }
+
+  .waveform-bar {
+    width: 3px;
+    background: hsl(141, 73%, 42%);
+    border-radius: 2px;
+    animation: wave 0.8s ease-in-out infinite;
+  }
+
+  .waveform-bar:nth-child(1) { animation-delay: 0s; height: 40%; }
+  .waveform-bar:nth-child(2) { animation-delay: 0.1s; height: 70%; }
+  .waveform-bar:nth-child(3) { animation-delay: 0.2s; height: 50%; }
+  .waveform-bar:nth-child(4) { animation-delay: 0.3s; height: 90%; }
+  .waveform-bar:nth-child(5) { animation-delay: 0.4s; height: 60%; }
+}
+
+/* Custom Scrollbar for WebKit */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Slider Customization */
+[data-slot="slider-track"] {
+  @apply bg-white/10 h-1 group-hover:h-1.5 transition-all;
+}
+
+[data-slot="slider-range"] {
+  @apply bg-white group-hover:bg-primary transition-colors;
+}
+
+[data-slot="slider-thumb"] {
+  @apply w-3 h-3 bg-white opacity-0 group-hover:opacity-100 transition-opacity;
+  @apply shadow-lg;
+}

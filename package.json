@@ -1,0 +1,13 @@
+{
+  "name": "beatrelay",
+  "version": "1.0.0",
+  "description": "BeatRelay - MCP Server with Frontend",
+  "scripts": {
+    "install:all": "npm install --prefix frontend && npm install --prefix mcp-server",
+    "dev": "npm run dev --prefix frontend & npm run dev --prefix mcp-server",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:server": "npm run dev --prefix mcp-server",
+    "build:frontend": "npm run build --prefix frontend",
+    "build:server": "npm run build --prefix mcp-server"
+  }
+}
