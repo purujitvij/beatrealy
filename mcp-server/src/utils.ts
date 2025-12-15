@@ -15,9 +15,26 @@ export interface SpotifyConfig {
   redirectUri: string;
   accessToken?: string;
   refreshToken?: string;
+  source?: 'env' | 'file';
 }
 
 export function loadSpotifyConfig(): SpotifyConfig {
+  // Prefer environment variables for containerized deployments
+  const envClientId = process.env.SPOTIFY_CLIENT_ID;
+  const envClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+  const envRedirectUri = process.env.SPOTIFY_REDIRECT_URI;
+  if (envClientId && envClientSecret && envRedirectUri) {
+    return {
+      clientId: envClientId,
+      clientSecret: envClientSecret,
+      redirectUri: envRedirectUri,
+      accessToken: process.env.SPOTIFY_ACCESS_TOKEN,
+      refreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
+      source: 'env',
+    };
+  }
+
+  // Fall back to local config file for local development
   if (!fs.existsSync(CONFIG_FILE)) {
     throw new Error(
       `Spotify configuration file not found at ${CONFIG_FILE}. Please create one with clientId, clientSecret, and redirectUri.`,
@@ -31,7 +48,7 @@ export function loadSpotifyConfig(): SpotifyConfig {
         'Spotify configuration must include clientId, clientSecret, and redirectUri.',
       );
     }
-    return config;
+    return { ...config, source: 'file' };
   } catch (error) {
     throw new Error(
       `Failed to parse Spotify configuration: ${error instanceof Error ? error.message : String(error)
@@ -41,6 +58,11 @@ export function loadSpotifyConfig(): SpotifyConfig {
 }
 
 export function saveSpotifyConfig(config: SpotifyConfig): void {
+  // Skip saving when config comes from environment variables (stateless containers)
+  if (config.source === 'env') {
+    return;
+  }
+
   fs.writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2), 'utf8');
 }
 

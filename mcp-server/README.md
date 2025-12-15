@@ -425,6 +425,16 @@ npm run auth
 
 7. The server will automatically refresh the access token when needed, using the refresh token.
 
+### Environment variables (for containers)
+
+You can configure the server with environment variables instead of `spotify-config.json` (useful for Cloud Run/Docker):
+
+- `SPOTIFY_CLIENT_ID`
+- `SPOTIFY_CLIENT_SECRET`
+- `SPOTIFY_REDIRECT_URI`
+- `SPOTIFY_ACCESS_TOKEN` (optional)
+- `SPOTIFY_REFRESH_TOKEN` (optional)
+
 ## Integrating with Claude Desktop, Cursor, and VsCode [Via Cline model extension](https://marketplace.visualstudio.com/items/?itemName=saoudrizwan.claude-dev)
 
 To use your MCP server with Claude Desktop, add it to your Claude configuration:
