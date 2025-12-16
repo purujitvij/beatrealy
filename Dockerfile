@@ -2,14 +2,14 @@ FROM node:20-slim
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package files from mcp-server
+COPY mcp-server/package*.json ./
 
 # Install ALL deps (need typescript for build)
 RUN npm ci
 
 # Copy source and build
-COPY . .
+COPY mcp-server/ .
 RUN npm run build
 
 # Remove dev dependencies after build
