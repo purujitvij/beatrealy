@@ -11,7 +11,7 @@ const getAlbums: tool<{
     'Get detailed information about one or more albums by their Spotify IDs',
   schema: {
     albumIds: z
-      .union([z.string(), z.array(z.string()).max(20)]).  
+      .union([z.string(), z.array(z.string()).max(20)])
       .describe('A single album ID or array of album IDs (max 20)'),
   },
   handler: async (args, _extra: SpotifyHandlerExtra) => {

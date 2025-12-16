@@ -22,6 +22,8 @@ info:
     name: MIT
 
 servers:
+  - url: https://mcp-server-910617942420.us-central1.run.app/api
+    description: Production server
   - url: http://localhost:3000/api
     description: Local development server
 

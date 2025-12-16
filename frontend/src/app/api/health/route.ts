@@ -14,8 +14,9 @@ export async function GET() {
 
   try {
     // Test MCP connection
+    const mcpServerUrl = process.env.NEXT_PUBLIC_MCP_SERVER_URL || 'http://127.0.0.1:3000/mcp';
     const transport = new StreamableHTTPClientTransport(
-      new URL('http://127.0.0.1:3000/mcp')
+      new URL(mcpServerUrl)
     );
     client = new Client({
       name: 'health-check',

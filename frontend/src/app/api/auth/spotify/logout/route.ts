@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const MCP_SERVER_URL = 'http://127.0.0.1:3000';
+const MCP_SERVER_URL = process.env.NEXT_PUBLIC_MCP_SERVER_URL?.replace('/mcp', '') || 'http://127.0.0.1:3000';
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001';

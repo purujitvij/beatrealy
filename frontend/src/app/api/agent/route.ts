@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent';
-const MCP_EXECUTE_URL = 'http://127.0.0.1:3000/execute';
+const MCP_EXECUTE_URL = process.env.NEXT_PUBLIC_MCP_EXECUTE_URL || 'http://127.0.0.1:3000/execute';
 
 const SYSTEM_PROMPT = `You are Moodify AI, a friendly music assistant that controls Spotify and suggests music based on mood.
 

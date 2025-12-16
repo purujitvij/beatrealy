@@ -1,8 +1,8 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
 
-const MCP_SERVER_URL = 'http://127.0.0.1:3000/mcp';
-const MCP_EXECUTE_URL = 'http://127.0.0.1:3000/execute';
+const MCP_SERVER_URL = process.env.NEXT_PUBLIC_MCP_SERVER_URL || 'http://127.0.0.1:3000/mcp';
+const MCP_EXECUTE_URL = process.env.NEXT_PUBLIC_MCP_EXECUTE_URL || 'http://127.0.0.1:3000/execute';
 
 export interface MCPToolResponse<T = unknown> {
   success: boolean;
