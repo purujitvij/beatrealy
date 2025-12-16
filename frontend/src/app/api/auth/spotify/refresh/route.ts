@@ -1,29 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
 
 const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token';
-
-// Path to the MCP server's spotify-config.json
-const SPOTIFY_CONFIG_PATH = path.join(process.cwd(), '..', 'spotify-config.json');
-
-// Update the MCP server's spotify-config.json with new tokens
-async function updateSpotifyConfig(accessToken: string, refreshToken?: string): Promise<void> {
-  try {
-    const configData = await fs.readFile(SPOTIFY_CONFIG_PATH, 'utf-8');
-    const config = JSON.parse(configData);
-
-    config.accessToken = accessToken;
-    if (refreshToken) {
-      config.refreshToken = refreshToken;
-    }
-
-    await fs.writeFile(SPOTIFY_CONFIG_PATH, JSON.stringify(config, null, 2));
-    console.log('[Spotify Refresh] Updated spotify-config.json with new tokens');
-  } catch (error) {
-    console.error('[Spotify Refresh] Failed to update spotify-config.json:', error);
-  }
-}
 
 export async function POST(request: NextRequest) {
   const refreshToken = request.cookies.get('spotify_refresh_token')?.value;
@@ -60,9 +37,6 @@ export async function POST(request: NextRequest) {
 
     const tokenData = await tokenResponse.json();
     const expiresAt = Date.now() + (tokenData.expires_in * 1000);
-
-    // Update MCP server's spotify-config.json
-    await updateSpotifyConfig(tokenData.access_token, tokenData.refresh_token);
 
     // Create response with updated cookies
     const response = NextResponse.json({
