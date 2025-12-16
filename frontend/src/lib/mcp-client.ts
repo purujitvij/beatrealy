@@ -12,8 +12,8 @@ export interface MCPToolResponse<T = unknown> {
 
 export interface MCPToolResult {
   content: Array<{ type: string; text: string }>;
-}
-
+} 
+ 
 export interface UserTokens {
   accessToken: string;
   refreshToken?: string;
