@@ -86,13 +86,19 @@ beatrelay/
 ### Prerequisites
 - Node.js (v18 or higher)
 - Spotify Developer Account (for API credentials)
+- Spotify Premium account (playback control needs it)
+
+### Spotify app limits
+
+- New Spotify apps start in **development mode**. Until you give the app a privacy policy, only users you add by hand to its allowlist in the [Spotify developer dashboard](https://developer.spotify.com/dashboard) can sign in.
+- Playback control (play, pause, skip, volume, queue) needs a **Spotify Premium** account.
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/purujitvij/beatrealy.git
-cd beatrealy
+git clone https://github.com/purujitvij/beatrelay.git
+cd beatrelay
 ```
 
 2. Install dependencies for both frontend and mcp-server:
