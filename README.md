@@ -4,6 +4,8 @@ A Spotify integration app with MCP (Model Context Protocol) server and Next.js f
 
 A chat agent that picks music for your mood and plays it on Spotify. Built by Purujit Vij and shipped in January 2026.
 
+**Case study:** [Shipping a mood-based Spotify agent four months before Spotify did](https://purujit.com/work/beatrelay-mood-agent/) · **Live demo:** [beatrealy.vercel.app](https://beatrealy.vercel.app)
+
 ## Credits
 
 - The Spotify MCP tools in [`mcp-server/`](mcp-server/) come from [marcelmarais/spotify-mcp-server](https://github.com/marcelmarais/spotify-mcp-server) by Marcel Marais (MIT, see [`mcp-server/LICENSE`](mcp-server/LICENSE)).
