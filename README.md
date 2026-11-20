@@ -88,11 +88,12 @@ beatrelay/
 ### Prerequisites
 - Node.js (v18 or higher)
 - Spotify Developer Account (for API credentials)
-- Spotify Premium account (playback control needs it)
+- Spotify Premium on the account that owns the Spotify app (required for development-mode apps since 2026, and playback control needs it too)
 
 ### Spotify app limits
 
-- New Spotify apps start in **development mode**. Until you give the app a privacy policy, only users you add by hand to its allowlist in the [Spotify developer dashboard](https://developer.spotify.com/dashboard) can sign in.
+- New Spotify apps start in **development mode**: only users you add by hand to the app's allowlist in the [Spotify developer dashboard](https://developer.spotify.com/dashboard) can sign in, up to 5 per app. Leaving it means [Extended Quota Mode](https://developer.spotify.com/documentation/web-api/concepts/quota-modes), which Spotify only grants to registered organizations with at least 250,000 monthly active users.
+- Since Spotify's [February 2026 changes](https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide) (9 March 2026 for existing apps), the **app owner needs an active Spotify Premium subscription**. If it lapses, every API call fails with "Active premium subscription required for the owner of the app" until it's renewed, and it can take a few hours to work again.
 - Playback control (play, pause, skip, volume, queue) needs a **Spotify Premium** account.
 
 ### Installation
