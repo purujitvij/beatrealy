@@ -2,6 +2,13 @@
 
 A Spotify integration app with MCP (Model Context Protocol) server and Next.js frontend.
 
+A chat agent that picks music for your mood and plays it on Spotify. Built by Purujit Vij and shipped in January 2026.
+
+## Credits
+
+- The Spotify MCP tools in [`mcp-server/`](mcp-server/) come from [marcelmarais/spotify-mcp-server](https://github.com/marcelmarais/spotify-mcp-server) by Marcel Marais (MIT, see [`mcp-server/LICENSE`](mcp-server/LICENSE)).
+- Built for BeatRelay by Purujit Vij: the Streamable HTTP transport with per-user sessions and Spotify logins (`mcp-server/src/sse.ts`, `mcp-server/src/tool-executor.ts`), the Gemini 2.5 Pro agent (`frontend/src/app/api/agent/`), and the Next.js app.
+
 ## Project Structure
 
 ```

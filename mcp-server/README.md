@@ -1,3 +1,7 @@
+> **Credit:** this folder is based on [marcelmarais/spotify-mcp-server](https://github.com/marcelmarais/spotify-mcp-server) by Marcel Marais, MIT licensed (see [LICENSE](LICENSE)). The Spotify tools in `read.ts`, `play.ts` and `albums.ts` are his.
+>
+> **Added for BeatRelay by Purujit Vij:** `sse.ts` (Streamable HTTP transport with a session per client, a REST `/execute` endpoint that runs a tool with the caller's own Spotify token, and Swagger docs) and `tool-executor.ts` (tools run per request with each user's token instead of one local config file), plus smaller changes in `play.ts` and `utils.ts`.
+
 <div align="center" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" width="30" height="30">
 <h1>Spotify MCP Server</h1>
